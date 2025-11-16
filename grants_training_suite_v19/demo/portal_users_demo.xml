@@ -34,10 +34,80 @@
             <field name="groups_id" eval="[(6, 0, [ref('base.group_portal')])]"/>
         </record>
         
-        <!-- Link Portal User 1 to Student and assign Agent -->
-        <record id="demo_student_5" model="gr.student">
+        <!-- Demo Student 1 with Agent and Portal User -->
+        <record id="demo_portal_student_1" model="gr.student">
+            <field name="name">John Portal Student</field>
+            <field name="name_english">John Portal Student</field>
+            <field name="name_arabic">جون طالب البوابة</field>
+            <field name="email">portal.john@example.com</field>
+            <field name="phone">+1234567890</field>
+            <field name="birth_date">1995-05-15</field>
+            <field name="gender">male</field>
+            <field name="nationality">American</field>
+            <field name="native_language">English</field>
+            <field name="english_level">intermediate</field>
+            <field name="state">approved</field>
             <field name="user_id" ref="portal_user_1"/>
             <field name="assigned_agent_id" ref="agent_user_1"/>
+        </record>
+        
+        <!-- Demo Course Sessions for Student 1 -->
+        <record id="demo_course_session_1_1" model="gr.course.session">
+            <field name="name">English Language Basics</field>
+            <field name="student_id" ref="demo_portal_student_1"/>
+            <field name="status">completed</field>
+            <field name="start_date" eval="(DateTime.now() - relativedelta(months=6)).strftime('%Y-%m-%d')"/>
+            <field name="end_date" eval="(DateTime.now() - relativedelta(months=3)).strftime('%Y-%m-%d')"/>
+            <field name="progress">100</field>
+        </record>
+        
+        <record id="demo_course_session_1_2" model="gr.course.session">
+            <field name="name">Advanced Communication Skills</field>
+            <field name="student_id" ref="demo_portal_student_1"/>
+            <field name="status">in_progress</field>
+            <field name="start_date" eval="(DateTime.now() - relativedelta(months=2)).strftime('%Y-%m-%d')"/>
+            <field name="end_date" eval="(DateTime.now() + relativedelta(months=2)).strftime('%Y-%m-%d')"/>
+            <field name="progress">75</field>
+        </record>
+        
+        <record id="demo_course_session_1_3" model="gr.course.session">
+            <field name="name">Business English Professional</field>
+            <field name="student_id" ref="demo_portal_student_1"/>
+            <field name="status">enrolled</field>
+            <field name="start_date" eval="(DateTime.now() - relativedelta(weeks=2)).strftime('%Y-%m-%d')"/>
+            <field name="end_date" eval="(DateTime.now() + relativedelta(months=3)).strftime('%Y-%m-%d')"/>
+            <field name="progress">30</field>
+        </record>
+        
+        <!-- Demo Certificates for Student 1 -->
+        <record id="demo_certificate_portal_1_1" model="gr.certificate">
+            <field name="name">CERT-P001</field>
+            <field name="student_id" ref="demo_portal_student_1"/>
+            <field name="certificate_title">English Language Proficiency Certificate</field>
+            <field name="certificate_type">completion</field>
+            <field name="state">issued</field>
+            <field name="course_name">English Language Basics</field>
+            <field name="issue_date" eval="(DateTime.now() - relativedelta(months=3)).strftime('%Y-%m-%d')"/>
+            <field name="valid_from" eval="(DateTime.now() - relativedelta(months=3)).strftime('%Y-%m-%d')"/>
+            <field name="valid_until" eval="(DateTime.now() + relativedelta(months=21)).strftime('%Y-%m-%d')"/>
+            <field name="certificate_description">Certificate of completion for English Language Basics course</field>
+            <field name="final_grade" eval="92.5"/>
+        </record>
+        
+        <record id="demo_certificate_portal_1_2" model="gr.certificate">
+            <field name="name">CERT-P002</field>
+            <field name="student_id" ref="demo_portal_student_1"/>
+            <field name="certificate_title">Advanced Communication Excellence Certificate</field>
+            <field name="certificate_type">excellence</field>
+            <field name="state">verified</field>
+            <field name="course_name">Advanced Communication Skills</field>
+            <field name="issue_date" eval="(DateTime.now() - relativedelta(weeks=2)).strftime('%Y-%m-%d')"/>
+            <field name="valid_from" eval="(DateTime.now() - relativedelta(weeks=2)).strftime('%Y-%m-%d')"/>
+            <field name="valid_until" eval="(DateTime.now() + relativedelta(months=24)).strftime('%Y-%m-%d')"/>
+            <field name="verified_date" eval="(DateTime.now() - relativedelta(weeks=1)).strftime('%Y-%m-%d')"/>
+            <field name="certificate_description">Excellence certificate for outstanding performance in Advanced Communication</field>
+            <field name="final_grade" eval="95.0"/>
+            <field name="verification_code">VER-ABC123</field>
         </record>
         
         <!-- Portal User 2 with Agent -->
@@ -48,10 +118,57 @@
             <field name="groups_id" eval="[(6, 0, [ref('base.group_portal')])]"/>
         </record>
         
-        <!-- Link Portal User 2 to Student and assign Agent -->
-        <record id="demo_student_6" model="gr.student">
+        <!-- Demo Student 2 with Agent and Portal User -->
+        <record id="demo_portal_student_2" model="gr.student">
+            <field name="name">Maria Portal Student</field>
+            <field name="name_english">Maria Portal Student</field>
+            <field name="name_arabic">ماريا طالبة البوابة</field>
+            <field name="email">portal.maria@example.com</field>
+            <field name="phone">+1234567891</field>
+            <field name="birth_date">1993-08-22</field>
+            <field name="gender">female</field>
+            <field name="nationality">Mexican</field>
+            <field name="native_language">Spanish</field>
+            <field name="english_level">advanced</field>
+            <field name="state">approved</field>
             <field name="user_id" ref="portal_user_2"/>
             <field name="assigned_agent_id" ref="agent_user_2"/>
+        </record>
+        
+        <!-- Demo Course Sessions for Student 2 -->
+        <record id="demo_course_session_2_1" model="gr.course.session">
+            <field name="name">English for Academic Purposes</field>
+            <field name="student_id" ref="demo_portal_student_2"/>
+            <field name="status">completed</field>
+            <field name="start_date" eval="(DateTime.now() - relativedelta(months=5)).strftime('%Y-%m-%d')"/>
+            <field name="end_date" eval="(DateTime.now() - relativedelta(months=2)).strftime('%Y-%m-%d')"/>
+            <field name="progress">100</field>
+        </record>
+        
+        <record id="demo_course_session_2_2" model="gr.course.session">
+            <field name="name">Technical Writing Skills</field>
+            <field name="student_id" ref="demo_portal_student_2"/>
+            <field name="status">in_progress</field>
+            <field name="start_date" eval="(DateTime.now() - relativedelta(months=1)).strftime('%Y-%m-%d')"/>
+            <field name="end_date" eval="(DateTime.now() + relativedelta(months=3)).strftime('%Y-%m-%d')"/>
+            <field name="progress">60</field>
+        </record>
+        
+        <!-- Demo Certificates for Student 2 -->
+        <record id="demo_certificate_portal_2_1" model="gr.certificate">
+            <field name="name">CERT-P003</field>
+            <field name="student_id" ref="demo_portal_student_2"/>
+            <field name="certificate_title">Academic English Mastery Certificate</field>
+            <field name="certificate_type">achievement</field>
+            <field name="state">verified</field>
+            <field name="course_name">English for Academic Purposes</field>
+            <field name="issue_date" eval="(DateTime.now() - relativedelta(months=2)).strftime('%Y-%m-%d')"/>
+            <field name="valid_from" eval="(DateTime.now() - relativedelta(months=2)).strftime('%Y-%m-%d')"/>
+            <field name="valid_until" eval="(DateTime.now() + relativedelta(months=22)).strftime('%Y-%m-%d')"/>
+            <field name="verified_date" eval="(DateTime.now() - relativedelta(months=1)).strftime('%Y-%m-%d')"/>
+            <field name="certificate_description">Achievement certificate for mastering Academic English</field>
+            <field name="final_grade" eval="88.5"/>
+            <field name="verification_code">VER-XYZ789</field>
         </record>
         
         <!-- Portal User 3 with Agent -->
@@ -62,24 +179,54 @@
             <field name="groups_id" eval="[(6, 0, [ref('base.group_portal')])]"/>
         </record>
         
-        <!-- Link Portal User 3 to Student and assign Agent -->
-        <record id="demo_student_7" model="gr.student">
+        <!-- Demo Student 3 with Agent and Portal User -->
+        <record id="demo_portal_student_3" model="gr.student">
+            <field name="name">Ahmed Portal Student</field>
+            <field name="name_english">Ahmed Portal Student</field>
+            <field name="name_arabic">أحمد طالب البوابة</field>
+            <field name="email">portal.ahmed@example.com</field>
+            <field name="phone">+1234567892</field>
+            <field name="birth_date">1998-11-08</field>
+            <field name="gender">male</field>
+            <field name="nationality">Egyptian</field>
+            <field name="native_language">Arabic</field>
+            <field name="english_level">intermediate</field>
+            <field name="state">approved</field>
             <field name="user_id" ref="portal_user_3"/>
             <field name="assigned_agent_id" ref="agent_user_3"/>
         </record>
         
-        <!-- Portal User 4 with Agent -->
-        <record id="portal_user_4" model="res.users">
-            <field name="name">Portal Sarah Johnson</field>
-            <field name="login">portal.sarah@example.com</field>
-            <field name="password">portal123</field>
-            <field name="groups_id" eval="[(6, 0, [ref('base.group_portal')])]"/>
+        <!-- Demo Course Sessions for Student 3 -->
+        <record id="demo_course_session_3_1" model="gr.course.session">
+            <field name="name">Conversational English</field>
+            <field name="student_id" ref="demo_portal_student_3"/>
+            <field name="status">in_progress</field>
+            <field name="start_date" eval="(DateTime.now() - relativedelta(months=2)).strftime('%Y-%m-%d')"/>
+            <field name="end_date" eval="(DateTime.now() + relativedelta(months=2)).strftime('%Y-%m-%d')"/>
+            <field name="progress">50</field>
         </record>
         
-        <!-- Link Portal User 4 to Student and assign Agent -->
-        <record id="demo_student_8" model="gr.student">
-            <field name="user_id" ref="portal_user_4"/>
-            <field name="assigned_agent_id" ref="agent_user_1"/>
+        <record id="demo_course_session_3_2" model="gr.course.session">
+            <field name="name">English Grammar Fundamentals</field>
+            <field name="student_id" ref="demo_portal_student_3"/>
+            <field name="status">enrolled</field>
+            <field name="start_date" eval="(DateTime.now() - relativedelta(weeks=1)).strftime('%Y-%m-%d')"/>
+            <field name="end_date" eval="(DateTime.now() + relativedelta(months=4)).strftime('%Y-%m-%d')"/>
+            <field name="progress">15</field>
+        </record>
+        
+        <!-- Demo Certificate for Student 3 -->
+        <record id="demo_certificate_portal_3_1" model="gr.certificate">
+            <field name="name">CERT-P004</field>
+            <field name="student_id" ref="demo_portal_student_3"/>
+            <field name="certificate_title">English Foundation Certificate</field>
+            <field name="certificate_type">participation</field>
+            <field name="state">draft</field>
+            <field name="course_name">Conversational English</field>
+            <field name="issue_date" eval="DateTime.now().strftime('%Y-%m-%d')"/>
+            <field name="valid_from" eval="DateTime.now().strftime('%Y-%m-%d')"/>
+            <field name="valid_until" eval="(DateTime.now() + relativedelta(months=24)).strftime('%Y-%m-%d')"/>
+            <field name="certificate_description">Foundation certificate for Conversational English course</field>
         </record>
         
     </data>
