@@ -142,7 +142,7 @@
                     <filter string="This Month" name="this_month" domain="[('last_generation_date', '>=', (context_today() - relativedelta(months=1)).strftime('%Y-%m-%d'))]"/>
                     <filter string="Last 30 Days" name="last_30_days" domain="[('last_generation_date', '>=', (context_today() - relativedelta(days=30)).strftime('%Y-%m-%d'))]"/>
                     
-                    <group expand="0" string="Group By">
+                    <group>
                         <filter string="Status" name="group_status" context="{'group_by': 'status'}"/>
                         <filter string="Training Program" name="group_program" context="{'group_by': 'training_program_id'}"/>
                         <filter string="Auto Generate" name="group_auto" context="{'group_by': 'auto_generate'}"/>

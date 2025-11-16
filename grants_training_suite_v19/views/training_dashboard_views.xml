@@ -147,7 +147,7 @@
                     <filter string="This Month" name="this_month" domain="[('date_from', '>=', (context_today() - relativedelta(months=1)).strftime('%Y-%m-01')), ('date_to', '&lt;=', context_today())]"/>
                     <filter string="Last 30 Days" name="last_30_days" domain="[('date_from', '>=', (context_today() - relativedelta(days=30)).strftime('%Y-%m-%d'))]"/>
                     
-                    <group expand="0" string="Group By">
+                    <group>
                         <filter string="Date Range" name="group_date_range" context="{'group_by': 'date_from'}"/>
                         <filter string="Auto Refresh" name="group_auto_refresh" context="{'group_by': 'auto_refresh'}"/>
                     </group>

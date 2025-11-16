@@ -119,7 +119,7 @@
                     <filter string="With Errors" name="with_errors" domain="[('error_count', '>', 0)]"/>
                     <filter string="Successful" name="successful" domain="[('error_count', '=', 0), ('enrolled_count', '>', 0)]"/>
                     <separator/>
-                    <group expand="0" string="Group By">
+                    <group>
                         <filter string="Training Program" name="group_program" domain="[]" context="{'group_by': 'training_program_id'}"/>
                         <filter string="Enrollment Type" name="group_type" domain="[]" context="{'group_by': 'enrollment_type'}"/>
                         <filter string="Student Selection" name="group_selection" domain="[]" context="{'group_by': 'student_selection_type'}"/>

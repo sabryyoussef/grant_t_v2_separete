@@ -227,7 +227,7 @@
                     <filter string="Recently Used" name="recently_used" domain="[('last_used_date', '!=', False)]" context="{'order_by': 'last_used_date desc'}"/>
                     <filter string="Most Used" name="most_used" domain="[('usage_count', '>', 0)]" context="{'order_by': 'usage_count desc'}"/>
                     
-                    <group expand="0" string="Group By">
+                    <group>
                         <filter string="Template Type" name="group_type" context="{'group_by': 'template_type'}"/>
                         <filter string="Default Status" name="group_default" context="{'group_by': 'is_default'}"/>
                         <filter string="Active Status" name="group_active" context="{'group_by': 'active'}"/>

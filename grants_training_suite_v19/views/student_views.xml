@@ -248,7 +248,7 @@
                     <separator/>
                     <filter string="This Month" name="this_month" domain="[('intake_date', '>=', (context_today() - relativedelta(months=1)).strftime('%Y-%m-01'))]"/>
                     <filter string="This Year" name="this_year" domain="[('intake_date', '>=', (context_today() - relativedelta(years=1)).strftime('%Y-01-01'))]"/>
-                    <group expand="0" string="Group By">
+                    <group>
                         <filter string="Status" name="group_state" context="{'group_by': 'state'}"/>
                         <filter string="Agent" name="group_agent" context="{'group_by': 'assigned_agent_id'}"/>
                         <filter string="Intake Batch" name="group_intake_batch" context="{'group_by': 'intake_batch_id'}"/>

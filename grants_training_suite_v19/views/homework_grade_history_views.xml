@@ -88,7 +88,7 @@
                     <filter string="Grade Increases" name="increases" domain="[('grade_change', '&gt;', 0)]"/>
                     <filter string="Grade Decreases" name="decreases" domain="[('grade_change', '&lt;', 0)]"/>
                     
-                    <group expand="0" string="Group By">
+                    <group>
                         <filter string="Student" name="group_student" context="{'group_by': 'student_id'}"/>
                         <filter string="Changed By" name="group_changed_by" context="{'group_by': 'changed_by_id'}"/>
                         <filter string="Change Date" name="group_date" context="{'group_by': 'change_date:day'}"/>

@@ -149,7 +149,7 @@
                 <filter string="Draft" name="draft" domain="[('status', '=', 'draft')]"/>
                 <filter string="Active" name="active" domain="[('status', '=', 'active')]"/>
                 <filter string="Archived" name="archived" domain="[('status', '=', 'archived')]"/>
-                <group expand="0" string="Group By">
+                <group>
                     <filter string="Status" name="group_status" context="{'group_by': 'status'}"/>
                     <filter string="Training Program" name="group_program" context="{'group_by': 'training_program_id'}"/>
                 </group>

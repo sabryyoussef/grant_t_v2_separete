@@ -134,7 +134,7 @@
                 <filter string="Completed" name="completed" domain="[('status', '=', 'completed')]"/>
                 <filter string="Certified" name="certified" domain="[('status', '=', 'certified')]"/>
                 <filter string="This Week" name="this_week" domain="[('enrollment_date', '>=', (context_today() - datetime.timedelta(days=7)).strftime('%Y-%m-%d'))]"/>
-                <group expand="0" string="Group By">
+                <group>
                     <filter string="Status" name="group_status" context="{'group_by': 'status'}"/>
                     <filter string="Student" name="group_student" context="{'group_by': 'student_id'}"/>
                     <filter string="Course Integration" name="group_course" context="{'group_by': 'course_integration_id'}"/>

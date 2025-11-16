@@ -18,7 +18,7 @@
                     <filter string="In Progress" name="in_progress" domain="[('integration_status', '=', 'in_progress')]"/>
                     <filter string="Completed" name="completed" domain="[('integration_status', '=', 'completed')]"/>
                     <filter string="Certified" name="certified" domain="[('integration_status', '=', 'certified')]"/>
-                    <group expand="0" string="Group By">
+                    <group>
                         <filter string="Integration Status" name="group_integration_status" context="{'group_by': 'integration_status'}"/>
                         <filter string="Assigned Agent" name="group_agent" context="{'group_by': 'assigned_agent_id'}"/>
                         <filter string="Eligibility" name="group_eligibility" context="{'group_by': 'is_eligible'}"/>
@@ -45,7 +45,7 @@
                     <filter string="Low Progress" name="low_progress" domain="[('overall_progress', '&lt;', 25)]"/>
                     <filter string="Medium Progress" name="medium_progress" domain="[('overall_progress', '&gt;=', 25), ('overall_progress', '&lt;', 75)]"/>
                     <filter string="High Progress" name="high_progress" domain="[('overall_progress', '&gt;=', 75)]"/>
-                    <group expand="0" string="Group By">
+                    <group>
                         <filter string="Status" name="group_status" context="{'group_by': 'status'}"/>
                         <filter string="Course Integration" name="group_course" context="{'group_by': 'course_integration_id'}"/>
                         <filter string="Student" name="group_student" context="{'group_by': 'student_id'}"/>

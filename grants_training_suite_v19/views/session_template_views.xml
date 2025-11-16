@@ -112,7 +112,7 @@
                     <filter string="Intermediate Level" name="intermediate" domain="[('target_english_level', '=', 'intermediate')]"/>
                     <filter string="Advanced Level" name="advanced" domain="[('target_english_level', '=', 'advanced')]"/>
                     <separator/>
-                    <group expand="0" string="Group By">
+                    <group>
                         <filter string="Session Type" name="group_type" domain="[]" context="{'group_by': 'default_type'}"/>
                         <filter string="English Level" name="group_level" domain="[]" context="{'group_by': 'target_english_level'}"/>
                         <filter string="Course Integration" name="group_course" domain="[]" context="{'group_by': 'target_course_integration'}"/>
