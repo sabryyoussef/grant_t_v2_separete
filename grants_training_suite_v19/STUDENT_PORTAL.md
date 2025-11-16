@@ -163,51 +163,31 @@ For issues or questions:
 
 ## Troubleshooting
 
-### Odoo 19 Compatibility Issues
+### Common Issues
 
-If you encounter errors when loading the module in Odoo 19, apply these fixes:
+#### Issue 1: Module fails to load
+If the module fails to load, check the Odoo logs for specific errors. Common issues include:
+- Missing dependencies (ensure `portal`, `website`, `website_slides` are installed)
+- Database needs upgrade: `odoo-bin -u grants_training_suite_v19 -d your_database`
 
-#### Issue 1: res.groups field name change (CRITICAL ERROR)
-**File:** `security/grants_training_groups.xml`
+#### Issue 2: Portal pages show 404 errors
+- Ensure the module is properly installed
+- Check that website is enabled
+- Verify controllers are loaded (check `__init__.py` imports)
 
-**Error Message:** `Invalid field 'category_id' in 'res.groups'`
+#### Issue 3: Students can't see their data
+- Verify portal security rules are applied
+- Check that student email matches portal user email
+- Ensure portal access rights are in ir.model.access.csv
 
-**Problem:** In Odoo 19, the field `category_id` in `res.groups` model has been renamed to `category`.
+### Field Name Compatibility Note
 
-**Fix Required:** Replace all occurrences of `category_id` with `category` in the group definitions.
+**Important:** The `res.groups` model uses `category_id` (not `category`) in the current Odoo version. If you see an error about "Invalid field 'category'", the security groups file is correctly using `category_id`.
 
-**Specific Changes:**
-- Line 8: Change `<field name="category_id"` to `<field name="category"`
-- Line 15: Change `<field name="category_id"` to `<field name="category"`
-- Line 22: Change `<field name="category_id"` to `<field name="category"`
-- Line 29: Change `<field name="category_id"` to `<field name="category"`
+In future Odoo versions, this may change to just `category`. Always check your specific Odoo version's documentation.
+#### Common Warnings
 
-**Search and replace:** Replace `category_id` with `category` in all `<record>` tags for `res.groups` model.
-
-#### Issue 2: Duplicate field labels (WARNING)
-**File:** `models/certificate_automation.py`
-
-**Warning Message:** Two fields have the same label "Generated Certificates"
-
-**Problem:** Two fields (`generated_certificates` and `generated_certificates_count`) have the same label "Generated Certificates", causing a warning.
-
-**Fix Required:** Change the string label of the `generated_certificates_count` field.
-
-**Specific Change:**
-- Around line 100-104: Change `string='Generated Certificates'` to `string='Certificates Count'` for the `generated_certificates_count` field definition.
-
-#### Expected Result
-After these fixes:
-1. The module should load without the "Invalid field 'category_id' in 'res.groups'" error
-2. The duplicate label warning should disappear
-3. The module should start successfully in Odoo 19
-
-#### Command to verify
-After making changes, restart the Odoo server and check the logs for successful module loading:
-```bash
-# Restart Odoo and upgrade the module
-./odoo-bin -u grants_training_suite_v19 -d your_database
-```
+**Duplicate field labels (WARNING)**
 
 ## Future Enhancements
 
