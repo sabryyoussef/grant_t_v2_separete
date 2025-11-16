@@ -300,30 +300,36 @@ class Certificate(models.Model):
                 record.is_valid = False
     
     @api.model
-    def create(self, vals):
+    def create(self, vals_list):
         """Override create to set sequence and verification code."""
-        if vals.get('name', _('New')) == _('New'):
-            vals['name'] = self.env['ir.sequence'].next_by_code('gr.certificate') or _('New')
+        # Handle both single dict and list of dicts (Odoo 13+)
+        if not isinstance(vals_list, list):
+            vals_list = [vals_list]
         
-        # Generate verification code if not provided
-        if not vals.get('verification_code'):
-            import secrets
-            vals['verification_code'] = secrets.token_hex(8).upper()
+        for vals in vals_list:
+            if vals.get('name', _('New')) == _('New'):
+                vals['name'] = self.env['ir.sequence'].next_by_code('gr.certificate') or _('New')
+            
+            # Generate verification code if not provided
+            if not vals.get('verification_code'):
+                import secrets
+                vals['verification_code'] = secrets.token_hex(8).upper()
+            
+            # Set default validity period (2 years) if not provided
+            if not vals.get('valid_until') and vals.get('issue_date'):
+                issue_date = fields.Date.from_string(vals['issue_date'])
+                vals['valid_until'] = issue_date + timedelta(days=730)  # 2 years
+            elif not vals.get('valid_until'):
+                vals['valid_until'] = fields.Date.today() + timedelta(days=730)
         
-        # Set default validity period (2 years) if not provided
-        if not vals.get('valid_until') and vals.get('issue_date'):
-            issue_date = fields.Date.from_string(vals['issue_date'])
-            vals['valid_until'] = issue_date + timedelta(days=730)  # 2 years
-        elif not vals.get('valid_until'):
-            vals['valid_until'] = fields.Date.today() + timedelta(days=730)
+        certificates = super(Certificate, self).create(vals_list)
         
-        certificate = super(Certificate, self).create(vals)
+        # Log creation for each certificate
+        for certificate in certificates:
+            _logger.info('Certificate created: %s - Student: %s, Type: %s', 
+                        certificate.name, certificate.student_id.name, certificate.certificate_type)
         
-        # Log creation
-        _logger.info('Certificate created: %s - Student: %s, Type: %s', 
-                    certificate.name, certificate.student_id.name, certificate.certificate_type)
-        
-        return certificate
+        return certificates
     
     def action_issue(self):
         """Action to issue the certificate."""

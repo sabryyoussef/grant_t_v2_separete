@@ -132,11 +132,18 @@ class IntakeBatchMappingWizard(models.TransientModel):
             _logger.error('Error parsing available columns: %s', str(e))
 
     @api.model
-    def create(self, vals):
+    def create(self, vals_list):
         """Override create to set up mapping fields."""
-        record = super().create(vals)
-        record._setup_mapping_fields()
-        return record
+        # Handle both single dict and list of dicts (Odoo 13+)
+        if not isinstance(vals_list, list):
+            vals_list = [vals_list]
+        
+        records = super().create(vals_list)
+        
+        for record in records:
+            record._setup_mapping_fields()
+        
+        return records
 
     def _setup_mapping_fields(self):
         """Set up the mapping fields with auto-detected values."""

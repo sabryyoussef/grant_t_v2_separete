@@ -286,23 +286,35 @@ class HomeworkAttempt(models.Model):
                 record.processing_time = 0.0
     
     @api.model
-    def create(self, vals):
+    def create(self, vals_list):
         """Override create to set sequence and attempt number."""
-        if vals.get('name', _('New')) == _('New'):
-            vals['name'] = self.env['ir.sequence'].next_by_code('gr.homework.attempt') or _('New')
+        # Handle both single dict and list of dicts (Odoo 13+)
+        if not isinstance(vals_list, list):
+            vals_list = [vals_list]
         
-        # Set attempt number if not provided
-        if not vals.get('attempt_number'):
-            student_id = vals.get('student_id')
-            homework_title = vals.get('homework_title')
-            if student_id and homework_title:
-                existing_attempts = self.search([
-                    ('student_id', '=', student_id),
-                    ('homework_title', '=', homework_title)
-                ])
-                vals['attempt_number'] = len(existing_attempts) + 1
+        for vals in vals_list:
+            if vals.get('name', _('New')) == _('New'):
+                vals['name'] = self.env['ir.sequence'].next_by_code('gr.homework.attempt') or _('New')
+            
+            # Set attempt number if not provided
+            if not vals.get('attempt_number'):
+                student_id = vals.get('student_id')
+                homework_title = vals.get('homework_title')
+                if student_id and homework_title:
+                    existing_attempts = self.search([
+                        ('student_id', '=', student_id),
+                        ('homework_title', '=', homework_title)
+                    ])
+                    vals['attempt_number'] = len(existing_attempts) + 1
         
-        homework_attempt = super(HomeworkAttempt, self).create(vals)
+        homework_attempts = super(HomeworkAttempt, self).create(vals_list)
+        
+        # Log creation for each attempt
+        for homework_attempt in homework_attempts:
+            _logger.info('Homework attempt created: %s - Student: %s', 
+                        homework_attempt.name, homework_attempt.student_id.name)
+        
+        return homework_attempts
         
         # Log creation
         _logger.info('Homework attempt created: %s - Student: %s, Title: %s', 

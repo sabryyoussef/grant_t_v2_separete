@@ -105,11 +105,18 @@ class IntakeBatchCorrectionWizard(models.TransientModel):
                 wizard.corrected_records_count = 0
     
     @api.model
-    def create(self, vals):
+    def create(self, vals_list):
         """Override create to load failed records data."""
-        wizard = super(IntakeBatchCorrectionWizard, self).create(vals)
-        wizard._load_failed_records()
-        return wizard
+        # Handle both single dict and list of dicts (Odoo 13+)
+        if not isinstance(vals_list, list):
+            vals_list = [vals_list]
+        
+        wizards = super(IntakeBatchCorrectionWizard, self).create(vals_list)
+        
+        for wizard in wizards:
+            wizard._load_failed_records()
+        
+        return wizards
     
     def _load_failed_records(self):
         """Load failed records data from the intake batch."""
