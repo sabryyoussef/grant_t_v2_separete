@@ -50,13 +50,13 @@
             <field name="homework_description">Write a 300-word essay about your favorite hobby</field>
         </record>
         
-        <!-- Demo Homework Attempt 5: Completed State -->
+        <!-- Demo Homework Attempt 5: Graded State -->
         <record id="demo_homework_attempt_5" model="gr.homework.attempt">
             <field name="name">HW005</field>
             <field name="student_id" ref="demo_student_5"/>
             <field name="homework_title">Speaking Practice</field>
             <field name="due_date">2025-11-17 23:59:00</field>
-            <field name="state">completed</field>
+            <field name="state">graded</field>
             <field name="submission_date">2025-11-16 12:15:00</field>
             <field name="review_date">2025-11-16 16:00:00</field>
             <field name="grade">92.0</field>
