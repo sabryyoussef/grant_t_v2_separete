@@ -223,25 +223,31 @@ class DocumentRequest(models.Model):
                 record.processing_time = 0.0
     
     @api.model
-    def create(self, vals):
+    def create(self, vals_list):
         """Override create to set sequence and deadline."""
-        if vals.get('name', _('New')) == _('New'):
-            vals['name'] = self.env['ir.sequence'].next_by_code('gr.document.request') or _('New')
+        # Handle both single dict and list of dicts (Odoo 13+)
+        if not isinstance(vals_list, list):
+            vals_list = [vals_list]
         
-        # Set default deadline (7 days from request)
-        if not vals.get('deadline_date') and vals.get('request_date'):
-            request_date = fields.Datetime.from_string(vals['request_date'])
-            vals['deadline_date'] = request_date + timedelta(days=7)
-        elif not vals.get('deadline_date'):
-            vals['deadline_date'] = fields.Datetime.now() + timedelta(days=7)
+        for vals in vals_list:
+            if vals.get('name', _('New')) == _('New'):
+                vals['name'] = self.env['ir.sequence'].next_by_code('gr.document.request') or _('New')
+            
+            # Set default deadline (7 days from request)
+            if not vals.get('deadline_date') and vals.get('request_date'):
+                request_date = fields.Datetime.from_string(vals['request_date'])
+                vals['deadline_date'] = request_date + timedelta(days=7)
+            elif not vals.get('deadline_date'):
+                vals['deadline_date'] = fields.Datetime.now() + timedelta(days=7)
         
-        document_request = super(DocumentRequest, self).create(vals)
+        document_requests = super(DocumentRequest, self).create(vals_list)
         
         # Log creation
-        _logger.info('Document request created: %s - Student: %s, Type: %s', 
-                    document_request.name, document_request.student_id.name, document_request.document_type)
+        for document_request in document_requests:
+            _logger.info('Document request created: %s - Student: %s, Type: %s', 
+                        document_request.name, document_request.student_id.name, document_request.document_type)
         
-        return document_request
+        return document_requests
     
     def action_request(self):
         """Action to confirm the request."""
