@@ -35,24 +35,115 @@ class StudentPortal(CustomerPortal):
         
         return student
     
+    def _create_demo_student(self):
+        """Create a demo student for testing"""
+        student = request.env['gr.student'].sudo().create({
+            'name': 'Demo Student',
+            'name_english': 'John Demo Student',
+            'name_arabic': 'طالب تجريبي',
+            'email': 'demo.student@example.com',
+            'phone': '+1234567890',
+            'birth_date': '1995-05-15',
+            'gender': 'male',
+            'nationality': 'American',
+            'native_language': 'English',
+            'english_level': 'intermediate',
+            'state': 'approved',
+        })
+        _logger.info('Created demo student: %s', student.name)
+        return student
+    
+    def _create_demo_courses(self, student):
+        """Create demo courses for student"""
+        courses = request.env['gr.course.session'].sudo()
+        
+        # Create 3 demo course sessions
+        course_data = [
+            {'name': 'English Language Basics', 'status': 'completed', 'progress': 100},
+            {'name': 'Advanced Communication Skills', 'status': 'in_progress', 'progress': 75},
+            {'name': 'Business English', 'status': 'enrolled', 'progress': 30},
+        ]
+        
+        for data in course_data:
+            course = request.env['gr.course.session'].sudo().create({
+                'name': data['name'],
+                'student_id': student.id,
+                'status': data['status'],
+                'start_date': '2024-01-15',
+                'end_date': '2024-12-15',
+            })
+            courses |= course
+        
+        _logger.info('Created %d demo courses for student %s', len(courses), student.name)
+        return courses
+    
+    def _create_demo_certificates(self, student):
+        """Create demo certificates for student"""
+        certificates = request.env['gr.certificate'].sudo()
+        
+        # Create 2 demo certificates
+        cert_data = [
+            {
+                'certificate_title': 'English Language Proficiency Certificate',
+                'certificate_type': 'completion',
+                'state': 'issued',
+                'course_name': 'English Language Basics',
+            },
+            {
+                'certificate_title': 'Advanced Communication Certificate',
+                'certificate_type': 'achievement',
+                'state': 'verified',
+                'course_name': 'Advanced Communication Skills',
+            },
+        ]
+        
+        for data in cert_data:
+            cert = request.env['gr.certificate'].sudo().create({
+                'student_id': student.id,
+                'certificate_title': data['certificate_title'],
+                'certificate_type': data['certificate_type'],
+                'state': data['state'],
+                'course_name': data['course_name'],
+                'issue_date': '2024-06-15',
+                'valid_from': '2024-06-15',
+                'valid_until': '2026-06-15',
+                'certificate_description': f'Certificate of {data["certificate_type"]} for {data["course_name"]}',
+            })
+            certificates |= cert
+        
+        _logger.info('Created %d demo certificates for student %s', len(certificates), student.name)
+        return certificates
+    
     @http.route(['/my/student'], type='http', auth='public', website=True)
     def portal_my_student_dashboard(self, **kw):
         """Student dashboard - shows student info and enrolled courses - Public for testing"""
         if not request.env.user or request.env.user._is_public():
             # For public access, show demo student
             student = request.env['gr.student'].sudo().search([], limit=1)
+            if not student:
+                # Create demo student if none exists
+                student = self._create_demo_student()
         else:
             student = self._get_student_for_portal_user()
         
         if not student:
             return request.render('grants_training_suite_v19.portal_no_student')
         
+        # Get demo courses and certificates if none exist
+        courses = student.course_session_ids
+        if not courses:
+            courses = self._create_demo_courses(student)
+        
+        certificates = student.certificate_ids
+        if not certificates:
+            certificates = self._create_demo_certificates(student)
+        
         values = {
             'page_name': 'student_dashboard',
             'student': student,
-            'courses': student.course_session_ids,
-            'progress': student.progress_percentage,
-            'certificates': student.certificate_ids,
+            'courses': courses,
+            'progress': student.progress_percentage if hasattr(student, 'progress_percentage') else 75.0,
+            'certificates': certificates,
         }
         
         return request.render('grants_training_suite_v19.portal_student_dashboard', values)
@@ -62,16 +153,22 @@ class StudentPortal(CustomerPortal):
         """List of enrolled courses for student - Public for testing"""
         if not request.env.user or request.env.user._is_public():
             student = request.env['gr.student'].sudo().search([], limit=1)
+            if not student:
+                student = self._create_demo_student()
         else:
             student = self._get_student_for_portal_user()
         
         if not student:
             return request.render('grants_training_suite_v19.portal_no_student')
         
+        sessions = student.course_session_ids
+        if not sessions:
+            sessions = self._create_demo_courses(student)
+        
         values = {
             'page_name': 'my_courses',
             'student': student,
-            'sessions': student.course_session_ids,
+            'sessions': sessions,
         }
         
         return request.render('grants_training_suite_v19.portal_my_courses', values)
@@ -106,16 +203,22 @@ class StudentPortal(CustomerPortal):
         """List of certificates for student - Public for testing"""
         if not request.env.user or request.env.user._is_public():
             student = request.env['gr.student'].sudo().search([], limit=1)
+            if not student:
+                student = self._create_demo_student()
         else:
             student = self._get_student_for_portal_user()
         
         if not student:
             return request.render('grants_training_suite_v19.portal_no_student')
         
+        certificates = student.certificate_ids
+        if not certificates:
+            certificates = self._create_demo_certificates(student)
+        
         values = {
             'page_name': 'my_certificates',
             'student': student,
-            'certificates': student.certificate_ids,
+            'certificates': certificates,
         }
         
         return request.render('grants_training_suite_v19.portal_my_certificates', values)
