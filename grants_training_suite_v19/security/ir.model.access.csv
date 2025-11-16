@@ -73,3 +73,8 @@ access_gr_certificate_template_preview_teacher,gr.certificate.template.preview.t
 access_gr_certificate_automation_wizard_manager,gr.certificate.automation.wizard.manager,model_gr_certificate_automation_wizard,grants_training_suite_v2.group_manager,1,1,1,1
 access_gr_certificate_automation_wizard_agent,gr.certificate.automation.wizard.agent,model_gr_certificate_automation_wizard,grants_training_suite_v2.group_agent,1,1,1,0
 access_gr_certificate_automation_wizard_teacher,gr.certificate.automation.wizard.teacher,model_gr_certificate_automation_wizard,grants_training_suite_v2.group_teacher,1,1,0,0
+access_gr_student_portal,gr.student.portal,model_gr_student,base.group_portal,1,1,0,0
+access_gr_course_session_portal,gr.course.session.portal,model_gr_course_session,base.group_portal,1,0,0,0
+access_gr_certificate_portal,gr.certificate.portal,model_gr_certificate,base.group_portal,1,0,0,0
+access_gr_course_integration_portal,gr.course.integration.portal,model_gr_course_integration,base.group_portal,1,0,0,0
+access_gr_homework_attempt_portal,gr.homework.attempt.portal,model_gr_homework_attempt,base.group_portal,1,0,0,0

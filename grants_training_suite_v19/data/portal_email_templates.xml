@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Email Template for Student Welcome -->
+        <record id="email_template_student_welcome" model="mail.template">
+            <field name="name">Student Welcome Email</field>
+            <field name="model_id" ref="model_gr_student"/>
+            <field name="subject">Welcome to Grants Training Portal - {{ object.name }}</field>
+            <field name="email_from">{{ (object.company_id.email or user.email) }}</field>
+            <field name="email_to">{{ object.email }}</field>
+            <field name="body_html" type="html">
+<div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
+    <div style="background-color: #007bff; color: white; padding: 20px; text-align: center;">
+        <h1 style="margin: 0;">Welcome to Grants Training Portal!</h1>
+    </div>
+    
+    <div style="padding: 30px; background-color: #f8f9fa;">
+        <h2 style="color: #333;">Hello {{ object.name }}!</h2>
+        
+        <p>Thank you for registering with Grants Training Portal. We're excited to have you on board!</p>
+        
+        <div style="background-color: white; padding: 20px; margin: 20px 0; border-left: 4px solid #007bff;">
+            <h3 style="margin-top: 0; color: #007bff;">Your Account Details</h3>
+            <p><strong>Email:</strong> {{ object.email }}</p>
+            <p><strong>Phone:</strong> {{ object.phone }}</p>
+            <p><strong>Status:</strong> {{ object.state }}</p>
+        </div>
+        
+        <h3 style="color: #333;">What's Next?</h3>
+        <ol>
+            <li>Check your eligibility status in your dashboard</li>
+            <li>Browse available courses</li>
+            <li>Enroll in courses that interest you</li>
+            <li>Start your learning journey!</li>
+        </ol>
+        
+        <div style="text-align: center; margin: 30px 0;">
+            <a href="/my/student" style="background-color: #007bff; color: white; padding: 12px 30px; text-decoration: none; border-radius: 5px; display: inline-block;">
+                Go to My Dashboard
+            </a>
+        </div>
+        
+        <p style="color: #666; font-size: 14px; margin-top: 30px;">
+            If you have any questions or need assistance, please don't hesitate to contact our support team.
+        </p>
+    </div>
+    
+    <div style="background-color: #333; color: white; padding: 20px; text-align: center; font-size: 12px;">
+        <p style="margin: 0;">© 2025 Grants Training Portal. All rights reserved.</p>
+    </div>
+</div>
+            </field>
+        </record>
+    </data>
+</odoo>

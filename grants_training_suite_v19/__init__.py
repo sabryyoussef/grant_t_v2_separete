@@ -6,6 +6,9 @@
 # Import models
 from . import models
 
+# Import controllers
+from . import controllers
+
 # Import tests
 # from . import tests  # Temporarily disabled due to import error
 

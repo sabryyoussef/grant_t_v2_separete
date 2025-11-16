@@ -98,7 +98,7 @@ class CertificateAutomation(models.Model):
     ], string='Status', default='draft')
 
     generated_certificates_count = fields.Integer(
-        string='Generated Certificates',
+        string='Certificates Count',
         compute='_compute_certificate_stats',
         store=True
     )

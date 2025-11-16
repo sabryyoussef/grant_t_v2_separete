@@ -1,0 +1,645 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Portal Home Page -->
+    <template id="portal_home" name="Grants Training Portal Home">
+        <t t-call="website.layout">
+            <div id="wrap" class="oe_structure oe_empty">
+                <section class="s_banner pt96 pb96 o_colored_level" data-snippet="s_banner" data-name="Banner">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-7 pt16 pb16">
+                                <h1 class="display-3 fw-bold">Welcome to Grants Training Portal</h1>
+                                <p class="lead">Start your learning journey today. Register for courses and track your progress.</p>
+                                <div class="s_banner_buttons d-flex flex-wrap gap-2 pt24">
+                                    <a href="/grants/register" class="btn btn-primary btn-lg">Register Now</a>
+                                    <a href="/grants/login" class="btn btn-outline-primary btn-lg">Login</a>
+                                    <a href="/grants/courses/catalog" class="btn btn-secondary btn-lg">Browse Courses</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Features Section -->
+                <section class="s_features pt64 pb64" data-snippet="s_features">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="card border-0 shadow-sm h-100">
+                                    <div class="card-body text-center p-4">
+                                        <i class="fa fa-graduation-cap fa-3x text-primary mb-3"></i>
+                                        <h4>Quality Training</h4>
+                                        <p>Access high-quality training courses designed by experts.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="card border-0 shadow-sm h-100">
+                                    <div class="card-body text-center p-4">
+                                        <i class="fa fa-certificate fa-3x text-success mb-3"></i>
+                                        <h4>Get Certified</h4>
+                                        <p>Earn certificates upon completion of your courses.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="card border-0 shadow-sm h-100">
+                                    <div class="card-body text-center p-4">
+                                        <i class="fa fa-chart-line fa-3x text-info mb-3"></i>
+                                        <h4>Track Progress</h4>
+                                        <p>Monitor your learning progress and achievements.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </t>
+    </template>
+
+    <!-- Student Registration Page -->
+    <template id="portal_student_registration" name="Student Registration">
+        <t t-call="website.layout">
+            <div id="wrap" class="oe_structure">
+                <section class="pt48 pb48">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="card shadow">
+                                    <div class="card-body p-5">
+                                        <h2 class="text-center mb-4">Student Registration</h2>
+                                        <form action="/grants/register/submit" method="POST" class="needs-validation">
+                                            <!-- Personal Information -->
+                                            <h5 class="mb-3">Personal Information</h5>
+                                            
+                                            <div class="row mb-3">
+                                                <div class="col-md-6">
+                                                    <label for="name_english" class="form-label">Full Name (English) *</label>
+                                                    <input type="text" class="form-control" id="name_english" name="name_english" required="required"/>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label for="name_arabic" class="form-label">Full Name (Arabic) *</label>
+                                                    <input type="text" class="form-control" id="name_arabic" name="name_arabic" required="required"/>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="row mb-3">
+                                                <div class="col-md-6">
+                                                    <label for="email" class="form-label">Email *</label>
+                                                    <input type="email" class="form-control" id="email" name="email" required="required"/>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label for="phone" class="form-label">Phone *</label>
+                                                    <input type="tel" class="form-control" id="phone" name="phone" required="required"/>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="row mb-3">
+                                                <div class="col-md-4">
+                                                    <label for="birth_date" class="form-label">Birth Date *</label>
+                                                    <input type="date" class="form-control" id="birth_date" name="birth_date" required="required"/>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label for="gender" class="form-label">Gender *</label>
+                                                    <select class="form-select" id="gender" name="gender" required="required">
+                                                        <option value="">Select...</option>
+                                                        <option value="male">Male</option>
+                                                        <option value="female">Female</option>
+                                                        <option value="other">Other</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label for="nationality" class="form-label">Nationality *</label>
+                                                    <input type="text" class="form-control" id="nationality" name="nationality" required="required"/>
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- Language Information -->
+                                            <h5 class="mb-3 mt-4">Language Information</h5>
+                                            
+                                            <div class="row mb-3">
+                                                <div class="col-md-6">
+                                                    <label for="native_language" class="form-label">Native Language</label>
+                                                    <input type="text" class="form-control" id="native_language" name="native_language" value="Arabic"/>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label for="english_level" class="form-label">English Level *</label>
+                                                    <select class="form-select" id="english_level" name="english_level" required="required">
+                                                        <option value="">Select...</option>
+                                                        <option value="beginner">Beginner</option>
+                                                        <option value="elementary">Elementary</option>
+                                                        <option value="intermediate">Intermediate</option>
+                                                        <option value="upper_intermediate">Upper Intermediate</option>
+                                                        <option value="advanced">Advanced</option>
+                                                        <option value="proficient">Proficient</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- Certificate Information -->
+                                            <h5 class="mb-3 mt-4">Certificate Information</h5>
+                                            
+                                            <div class="row mb-3">
+                                                <div class="col-md-6">
+                                                    <label for="has_certificate" class="form-label">Do you have a certificate?</label>
+                                                    <select class="form-select" id="has_certificate" name="has_certificate">
+                                                        <option value="no">No</option>
+                                                        <option value="yes">Yes</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label for="certificate_type" class="form-label">Certificate Type</label>
+                                                    <input type="text" class="form-control" id="certificate_type" name="certificate_type"/>
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- Course Preference -->
+                                            <h5 class="mb-3 mt-4">Course Preference (Optional)</h5>
+                                            
+                                            <div class="mb-4">
+                                                <label for="preferred_course" class="form-label">Preferred Course</label>
+                                                <select class="form-select" id="preferred_course" name="preferred_course">
+                                                    <option value="">No preference</option>
+                                                    <t t-foreach="courses" t-as="course">
+                                                        <option t-att-value="course.id"><t t-esc="course.name"/></option>
+                                                    </t>
+                                                </select>
+                                            </div>
+                                            
+                                            <div class="text-center mt-4">
+                                                <button type="submit" class="btn btn-primary btn-lg">Register</button>
+                                                <a href="/grants" class="btn btn-secondary btn-lg ms-2">Cancel</a>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </t>
+    </template>
+
+    <!-- Registration Success Page -->
+    <template id="portal_registration_success" name="Registration Success">
+        <t t-call="website.layout">
+            <div id="wrap" class="oe_structure">
+                <section class="pt96 pb96">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-6 text-center">
+                                <i class="fa fa-check-circle fa-5x text-success mb-4"></i>
+                                <h1 class="mb-4">Registration Successful!</h1>
+                                <p class="lead mb-4">Welcome to Grants Training Portal, <strong t-esc="student.name"/>!</p>
+                                <p>Your account has been created successfully. You will receive a welcome email with your login credentials shortly.</p>
+                                <div class="mt-5">
+                                    <a href="/grants/login" class="btn btn-primary btn-lg">Go to Login</a>
+                                    <a href="/grants" class="btn btn-secondary btn-lg ms-2">Back to Home</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </t>
+    </template>
+
+    <!-- Registration Error Page -->
+    <template id="portal_registration_error" name="Registration Error">
+        <t t-call="website.layout">
+            <div id="wrap" class="oe_structure">
+                <section class="pt96 pb96">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-6 text-center">
+                                <i class="fa fa-exclamation-triangle fa-5x text-danger mb-4"></i>
+                                <h1 class="mb-4">Registration Failed</h1>
+                                <div class="alert alert-danger" role="alert">
+                                    <t t-esc="error"/>
+                                </div>
+                                <div class="mt-5">
+                                    <a href="/grants/register" class="btn btn-primary btn-lg">Try Again</a>
+                                    <a href="/grants" class="btn btn-secondary btn-lg ms-2">Back to Home</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </t>
+    </template>
+
+    <!-- Student Dashboard -->
+    <template id="portal_student_dashboard" name="Student Dashboard">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+            
+            <t t-call="portal.portal_searchbar">
+                <t t-set="title">My Dashboard</t>
+            </t>
+            
+            <div class="row mt-4">
+                <!-- Student Info Card -->
+                <div class="col-lg-4 mb-4">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title mb-3">Student Information</h5>
+                            <p><strong>Name:</strong> <t t-esc="student.name"/></p>
+                            <p><strong>Email:</strong> <t t-esc="student.email"/></p>
+                            <p><strong>Phone:</strong> <t t-esc="student.phone"/></p>
+                            <p><strong>Status:</strong> 
+                                <span t-att-class="'badge ' + ('bg-success' if student.state == 'enrolled' else 'bg-warning')">
+                                    <t t-esc="dict(student._fields['state'].selection).get(student.state)"/>
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Progress Card -->
+                <div class="col-lg-4 mb-4">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title mb-3">Learning Progress</h5>
+                            <div class="mb-3">
+                                <div class="d-flex justify-content-between mb-2">
+                                    <span>Overall Progress</span>
+                                    <span><t t-esc="round(progress, 1)"/>%</span>
+                                </div>
+                                <div class="progress" style="height: 20px;">
+                                    <div class="progress-bar bg-success" role="progressbar" 
+                                         t-att-style="'width: ' + str(progress) + '%'" 
+                                         t-att-aria-valuenow="progress" aria-valuemin="0" aria-valuemax="100">
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="mb-1"><strong>Total Sessions:</strong> <t t-esc="len(courses)"/></p>
+                            <p class="mb-1"><strong>Completed:</strong> <t t-esc="len(courses.filtered(lambda c: c.state == 'completed'))"/></p>
+                            <p class="mb-1"><strong>Certificates:</strong> <t t-esc="len(certificates)"/></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quick Actions Card -->
+                <div class="col-lg-4 mb-4">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title mb-3">Quick Actions</h5>
+                            <div class="d-grid gap-2">
+                                <a href="/my/courses" class="btn btn-primary">
+                                    <i class="fa fa-book me-2"></i>My Courses
+                                </a>
+                                <a href="/my/certificates" class="btn btn-success">
+                                    <i class="fa fa-certificate me-2"></i>My Certificates
+                                </a>
+                                <a href="/grants/courses/catalog" class="btn btn-info">
+                                    <i class="fa fa-search me-2"></i>Browse Courses
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Recent Courses -->
+            <div class="row">
+                <div class="col-12">
+                    <h4 class="mb-3">Recent Course Sessions</h4>
+                    <t t-if="courses">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Session</th>
+                                        <th>Date</th>
+                                        <th>Type</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="courses[:5]" t-as="session">
+                                        <tr>
+                                            <td><t t-esc="session.name"/></td>
+                                            <td><t t-esc="session.session_date.strftime('%Y-%m-%d %H:%M') if session.session_date else 'N/A'"/></td>
+                                            <td><t t-esc="dict(session._fields['session_type'].selection).get(session.session_type)"/></td>
+                                            <td>
+                                                <span t-att-class="'badge ' + ('bg-success' if session.state == 'completed' else 'bg-warning')">
+                                                    <t t-esc="dict(session._fields['state'].selection).get(session.state)"/>
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <a t-attf-href="/my/courses/#{session.id}" class="btn btn-sm btn-primary">View</a>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                    </t>
+                    <t t-else="">
+                        <div class="alert alert-info">
+                            <p class="mb-0">No course sessions yet. <a href="/grants/courses/catalog">Browse available courses</a> to get started.</p>
+                        </div>
+                    </t>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <!-- My Courses Page -->
+    <template id="portal_my_courses" name="My Courses">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+            
+            <t t-call="portal.portal_searchbar">
+                <t t-set="title">My Courses</t>
+            </t>
+            
+            <div class="row mt-4">
+                <t t-if="sessions">
+                    <t t-foreach="sessions" t-as="session">
+                        <div class="col-lg-4 mb-4">
+                            <div class="card h-100 border-0 shadow-sm">
+                                <div class="card-body">
+                                    <h5 class="card-title"><t t-esc="session.name"/></h5>
+                                    <p class="text-muted mb-2">
+                                        <i class="fa fa-calendar me-2"></i>
+                                        <t t-esc="session.session_date.strftime('%Y-%m-%d %H:%M') if session.session_date else 'N/A'"/>
+                                    </p>
+                                    <p class="mb-2">
+                                        <span t-att-class="'badge ' + ('bg-success' if session.state == 'completed' else 'bg-warning')">
+                                            <t t-esc="dict(session._fields['state'].selection).get(session.state)"/>
+                                        </span>
+                                    </p>
+                                    <p class="card-text"><t t-esc="session.session_topic or 'No topic specified'"/></p>
+                                    <a t-attf-href="/my/courses/#{session.id}" class="btn btn-primary">View Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </t>
+                <t t-else="">
+                    <div class="col-12">
+                        <div class="alert alert-info">
+                            <p class="mb-0">You are not enrolled in any courses yet. <a href="/grants/courses/catalog">Browse available courses</a>.</p>
+                        </div>
+                    </div>
+                </t>
+            </div>
+        </t>
+    </template>
+
+    <!-- Course Detail Page -->
+    <template id="portal_course_detail" name="Course Detail">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+            
+            <t t-call="portal.portal_searchbar">
+                <t t-set="title"><t t-esc="session.name"/></t>
+            </t>
+            
+            <div class="row mt-4">
+                <div class="col-lg-8">
+                    <div class="card border-0 shadow-sm mb-4">
+                        <div class="card-body">
+                            <h3 class="card-title"><t t-esc="session.name"/></h3>
+                            <hr/>
+                            
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <p><strong>Date:</strong> <t t-esc="session.session_date.strftime('%Y-%m-%d %H:%M') if session.session_date else 'N/A'"/></p>
+                                    <p><strong>Duration:</strong> <t t-esc="session.session_duration"/> hours</p>
+                                    <p><strong>Type:</strong> <t t-esc="dict(session._fields['session_type'].selection).get(session.session_type)"/></p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p><strong>Status:</strong> 
+                                        <span t-att-class="'badge ' + ('bg-success' if session.state == 'completed' else 'bg-warning')">
+                                            <t t-esc="dict(session._fields['state'].selection).get(session.state)"/>
+                                        </span>
+                                    </p>
+                                    <p t-if="session.location"><strong>Location:</strong> <t t-esc="session.location"/></p>
+                                    <p t-if="session.meeting_link">
+                                        <strong>Meeting Link:</strong> 
+                                        <a t-att-href="session.meeting_link" target="_blank">Join Meeting</a>
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <t t-if="session.session_topic">
+                                <h5>Topic</h5>
+                                <p><t t-esc="session.session_topic"/></p>
+                            </t>
+                            
+                            <t t-if="session.session_objectives">
+                                <h5>Objectives</h5>
+                                <p><t t-esc="session.session_objectives"/></p>
+                            </t>
+                            
+                            <t t-if="session.session_notes">
+                                <h5>Notes</h5>
+                                <p><t t-esc="session.session_notes"/></p>
+                            </t>
+                            
+                            <t t-if="session.homework_assigned">
+                                <h5>Homework</h5>
+                                <p><t t-esc="session.homework_assigned"/></p>
+                                <p t-if="session.homework_due_date" class="text-muted">
+                                    <strong>Due Date:</strong> <t t-esc="session.homework_due_date.strftime('%Y-%m-%d')"/>
+                                </p>
+                            </t>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">Session Details</h5>
+                            <hr/>
+                            <t t-if="session.progress_percentage">
+                                <p><strong>Progress:</strong> <t t-esc="round(session.progress_percentage, 1)"/>%</p>
+                                <div class="progress mb-3" style="height: 20px;">
+                                    <div class="progress-bar bg-success" role="progressbar" 
+                                         t-att-style="'width: ' + str(session.progress_percentage) + '%'">
+                                    </div>
+                                </div>
+                            </t>
+                            
+                            <t t-if="session.attendance_status">
+                                <p><strong>Attendance:</strong> <t t-esc="dict(session._fields['attendance_status'].selection).get(session.attendance_status)"/></p>
+                            </t>
+                            
+                            <t t-if="session.student_engagement">
+                                <p><strong>Engagement:</strong> <t t-esc="dict(session._fields['student_engagement'].selection).get(session.student_engagement)"/></p>
+                            </t>
+                            
+                            <t t-if="session.session_rating">
+                                <p><strong>Rating:</strong> <t t-esc="dict(session._fields['session_rating'].selection).get(session.session_rating)"/></p>
+                            </t>
+                            
+                            <div class="mt-4">
+                                <a href="/my/courses" class="btn btn-primary w-100">Back to My Courses</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <!-- My Certificates Page -->
+    <template id="portal_my_certificates" name="My Certificates">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+            
+            <t t-call="portal.portal_searchbar">
+                <t t-set="title">My Certificates</t>
+            </t>
+            
+            <div class="row mt-4">
+                <t t-if="certificates">
+                    <t t-foreach="certificates" t-as="cert">
+                        <div class="col-lg-6 mb-4">
+                            <div class="card h-100 border-0 shadow-sm">
+                                <div class="card-body">
+                                    <i class="fa fa-certificate fa-3x text-warning mb-3"></i>
+                                    <h5 class="card-title"><t t-esc="cert.certificate_name"/></h5>
+                                    <p class="text-muted">
+                                        <strong>Issued:</strong> 
+                                        <t t-esc="cert.issue_date.strftime('%Y-%m-%d') if cert.issue_date else 'N/A'"/>
+                                    </p>
+                                    <p><strong>Status:</strong> 
+                                        <span t-att-class="'badge ' + ('bg-success' if cert.state == 'issued' else 'bg-warning')">
+                                            <t t-esc="dict(cert._fields['state'].selection).get(cert.state)"/>
+                                        </span>
+                                    </p>
+                                    <t t-if="cert.state == 'issued'">
+                                        <a href="#" class="btn btn-primary">Download Certificate</a>
+                                    </t>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </t>
+                <t t-else="">
+                    <div class="col-12">
+                        <div class="alert alert-info">
+                            <p class="mb-0">You don't have any certificates yet. Complete your courses to earn certificates!</p>
+                        </div>
+                    </div>
+                </t>
+            </div>
+        </t>
+    </template>
+
+    <!-- No Student Found -->
+    <template id="portal_no_student" name="No Student Found">
+        <t t-call="portal.portal_layout">
+            <div class="row mt-5">
+                <div class="col-12 text-center">
+                    <i class="fa fa-user-slash fa-5x text-muted mb-4"></i>
+                    <h3>No Student Record Found</h3>
+                    <p class="lead">We couldn't find a student record associated with your account.</p>
+                    <p>Please contact support for assistance.</p>
+                    <a href="/grants" class="btn btn-primary mt-3">Back to Home</a>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <!-- Public Course Catalog -->
+    <template id="portal_course_catalog" name="Course Catalog">
+        <t t-call="website.layout">
+            <div id="wrap" class="oe_structure">
+                <section class="pt48 pb48">
+                    <div class="container">
+                        <h1 class="text-center mb-5">Available Courses</h1>
+                        
+                        <div class="row">
+                            <t t-if="courses">
+                                <t t-foreach="courses" t-as="course">
+                                    <div class="col-lg-4 mb-4">
+                                        <div class="card h-100 border-0 shadow-sm">
+                                            <div class="card-body">
+                                                <h5 class="card-title"><t t-esc="course.name"/></h5>
+                                                <p class="text-muted mb-2">
+                                                    <span class="badge bg-primary"><t t-esc="dict(course._fields['status'].selection).get(course.status)"/></span>
+                                                </p>
+                                                <p class="card-text" t-if="course.description">
+                                                    <t t-esc="course.description[:150]"/>...
+                                                </p>
+                                                <a t-attf-href="/grants/courses/#{course.id}" class="btn btn-primary">Learn More</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </t>
+                            </t>
+                            <t t-else="">
+                                <div class="col-12">
+                                    <div class="alert alert-info text-center">
+                                        <p class="mb-0">No courses available at the moment. Please check back later.</p>
+                                    </div>
+                                </div>
+                            </t>
+                        </div>
+                        
+                        <div class="text-center mt-5">
+                            <a href="/grants/register" class="btn btn-lg btn-primary">Register Now</a>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </t>
+    </template>
+
+    <!-- Public Course Detail -->
+    <template id="portal_course_detail_public" name="Course Detail (Public)">
+        <t t-call="website.layout">
+            <div id="wrap" class="oe_structure">
+                <section class="pt48 pb48">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <h1 class="mb-4"><t t-esc="course.name"/></h1>
+                                
+                                <div class="card border-0 shadow-sm mb-4">
+                                    <div class="card-body">
+                                        <h4>About This Course</h4>
+                                        <p t-if="course.description"><t t-esc="course.description"/></p>
+                                        <p t-else="">Course description not available.</p>
+                                        
+                                        <h5 class="mt-4">Course Details</h5>
+                                        <ul>
+                                            <li><strong>Status:</strong> <t t-esc="dict(course._fields['status'].selection).get(course.status)"/></li>
+                                            <li t-if="course.elearning_course_id">
+                                                <strong>eLearning Course:</strong> <t t-esc="course.elearning_course_id.name"/>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-lg-4">
+                                <div class="card border-0 shadow-sm sticky-top" style="top: 100px;">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Ready to Enroll?</h5>
+                                        <p class="card-text">Register now to start your learning journey.</p>
+                                        <a href="/grants/register" class="btn btn-primary btn-lg w-100 mb-2">Register</a>
+                                        <a href="/grants/login" class="btn btn-outline-primary btn-lg w-100">Login</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="text-center mt-5">
+                            <a href="/grants/courses/catalog" class="btn btn-secondary">Back to Course Catalog</a>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </t>
+    </template>
+</odoo>

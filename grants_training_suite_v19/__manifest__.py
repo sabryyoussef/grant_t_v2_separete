@@ -37,12 +37,14 @@
         # Security
         'security/grants_training_groups.xml',
         'security/ir.model.access.csv',
+        'security/portal_security_rules.xml',
         
         # Data
         'data/sequence.xml',
         'data/cron_jobs.xml',
         'data/phase3_cron_jobs.xml',
         'data/email_templates.xml',
+        'data/portal_email_templates.xml',
         
         # Views
         'views/intake_batch_views.xml',
@@ -68,6 +70,9 @@
         'views/notification_system_views.xml',
         'views/certificate_automation_views.xml',
         'views/menu_views.xml',
+        
+        # Portal Views
+        'views/portal/portal_templates.xml',
     ],
     'demo': [
         'demo/simple_demo_data.xml',

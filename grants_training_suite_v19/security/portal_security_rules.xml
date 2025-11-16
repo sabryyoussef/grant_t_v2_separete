@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Portal User: Students can only see their own records -->
+        <record id="student_portal_rule" model="ir.rule">
+            <field name="name">Portal: Students can only see their own student record</field>
+            <field name="model_id" ref="model_gr_student"/>
+            <field name="domain_force">[('email', '=', user.email)]</field>
+            <field name="groups" eval="[(4, ref('base.group_portal'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <record id="course_session_portal_rule" model="ir.rule">
+            <field name="name">Portal: Students can only see their own course sessions</field>
+            <field name="model_id" ref="model_gr_course_session"/>
+            <field name="domain_force">[('student_id.email', '=', user.email)]</field>
+            <field name="groups" eval="[(4, ref('base.group_portal'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <record id="certificate_portal_rule" model="ir.rule">
+            <field name="name">Portal: Students can only see their own certificates</field>
+            <field name="model_id" ref="model_gr_certificate"/>
+            <field name="domain_force">[('student_id.email', '=', user.email)]</field>
+            <field name="groups" eval="[(4, ref('base.group_portal'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <record id="homework_attempt_portal_rule" model="ir.rule">
+            <field name="name">Portal: Students can only see their own homework attempts</field>
+            <field name="model_id" ref="model_gr_homework_attempt"/>
+            <field name="domain_force">[('student_id.email', '=', user.email)]</field>
+            <field name="groups" eval="[(4, ref('base.group_portal'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <!-- Portal users can see all active course integrations (public catalog) -->
+        <record id="course_integration_portal_rule" model="ir.rule">
+            <field name="name">Portal: Students can see all active course integrations</field>
+            <field name="model_id" ref="model_gr_course_integration"/>
+            <field name="domain_force">[('status', '=', 'active')]</field>
+            <field name="groups" eval="[(4, ref('base.group_portal'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+    </data>
+</odoo>
