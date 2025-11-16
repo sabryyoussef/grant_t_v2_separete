@@ -77,8 +77,8 @@
     'demo': [
         'demo/simple_demo_data.xml',
         'demo/intake_batch_demo.xml',
-        'demo/portal_users_demo.xml',
         'demo/student_demo.xml',
+        'demo/portal_users_demo.xml',
         'demo/assignment_demo.xml',
         'demo/document_request_demo.xml',
         'demo/course_session_demo.xml',
