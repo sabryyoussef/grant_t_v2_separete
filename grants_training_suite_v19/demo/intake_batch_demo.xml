@@ -2,20 +2,22 @@
 <odoo>
     <data noupdate="1">
         
-        <!-- Demo Intake Batch 1: Draft State -->
+        <!-- Demo Intake Batch 1: Draft State with Sample CSV Data -->
         <record id="demo_intake_batch_1" model="gr.intake.batch">
             <field name="name">January 2025 Intake</field>
             <field name="filename">january_2025_students.csv</field>
+            <field name="file_data" type="base64">bmFtZSxlbWFpbCxwaG9uZSxiaXJ0aF9kYXRlLGdlbmRlcixuYXRpb25hbGl0eSxuYXRpdmVfbGFuZ3VhZ2UsZW5nbGlzaF9sZXZlbCxoYXNfY2VydGlmaWNhdGUsY2VydGlmaWNhdGVfdHlwZSxjZXJ0aWZpY2F0ZV9kYXRlCkpvaG4gU21pdGgsam9obi5zbWl0aEBlbWFpbC5jb20sKzEyMzQ1Njc4OTAsMTk5NS0wMy0xNSxtYWxlLEFtZXJpY2FuLEVuZ2xpc2gsYWR2YW5jZWQsdHJ1ZSxJRUxUUywyMDIzLTA2LTE1Ck1hcmlhIEdhcmNpYSxtYXJpYS5nYXJjaWFAZW1haWwuY29tLCsxMjM0NTY3ODkxLDE5OTItMDctMjIsZmVtYWxlLE1leGljYW4sU3BhbmlzaCxpbnRlcm1lZGlhdGUsZmFsc2UsLCwKQWhtZWQgSGFzc2FuLGFobWVkLmhhc3NhbkBlbWFpbC5jb20sKzEyMzQ1Njc4OTIsMTk5OC0xMS0wOCxtYWxlLEVneXB0aWFuLEFyYWJpYyxlbGVtZW50YXJ5LHRydWUsVE9FRkwsMjAyMy0wOS0yMApTYXJhaCBKb2huc29uLHNhcmFoLmpvaG5zb25AZW1haWwuY29tLCsxMjM0NTY3ODkzLDE5OTQtMDUtMTIsZmVtYWxlLENhbmFkaWFuLEVuZ2xpc2gscHJvZmljaWVudCx0cnVlLENhbWJyaWRnZSwyMDIzLTAzLTEwCkNhcmxvcyBSb2RyaWd1ZXosY2FybG9zLnJvZHJpZ3VlekBlbWFpbC5jb20sKzEyMzQ1Njc4OTQsMTk5Ni0wOS0zMCxtYWxlLFNwYW5pc2gsU3BhbmlzaCx1cHBlcl9pbnRlcm1lZGlhdGUsZmFsc2UsLCwKRmF0aW1hIEFsLVphaHJhLGZhdGltYS5hbHphaHJhQGVtYWlsLmNvbSwrMTIzNDU2Nzg5NSwxOTkzLTEyLTAzLGZlbWFsZSxNb3JvY2NhbixBcmFiaWMsYmVnaW5uZXIsZmFsc2UsLCwKRGF2aWQgS2ltLGRhdmlkLmtpbUBlbWFpbC5jb20sKzEyMzQ1Njc4OTYsMTk5Ny0wMS0xOCxtYWxlLEtvcmVhbixLb3JlYW4saW50ZXJtZWRpYXRlLHRydWUsVE9FSUMsMjAyMy0wOC0wNQpFbW1hIFdpbHNvbixlbW1hLndpbHNvbkBlbWFpbC5jb20sKzEyMzQ1Njc4OTcsMTk5MS0wNC0yNSxmZW1hbGUsQnJpdGlzaCxFbmdsaXNoLGFkdmFuY2VkLHRydWUsSUVMVFMsMjAyMy0wNy0xMgpNb2hhbW1lZCBBbGksbW9oYW1tZWQuYWxpQGVtYWlsLmNvbSwrMTIzNDU2Nzg5OCwxOTk5LTA4LTE0LG1hbGUsUGFraXN0YW5pLFVyZHUsZWxlbWVudGFyeSxmYWxzZSwsLApMaXNhIENoZW4sbGlzYS5jaGVuQGVtYWlsLmNvbSwrMTIzNDU2Nzg5OSwxOTk1LTEwLTA3LGZlbWFsZSxDaGluZXNlLE1hbmRhcmluLHVwcGVyX2ludGVybWVkaWF0ZSx0cnVlLEhTSywyMDIzLTA1LTI4</field>
             <field name="state">draft</field>
             <field name="upload_date">2025-01-15 10:30:00</field>
             <field name="total_records">0</field>
             <field name="error_records">0</field>
         </record>
         
-        <!-- Demo Intake Batch 2: Uploaded State -->
+        <!-- Demo Intake Batch 2: Uploaded State with Sample CSV Data -->
         <record id="demo_intake_batch_2" model="gr.intake.batch">
             <field name="name">February 2025 Intake</field>
-            <field name="filename">february_2025_students.xlsx</field>
+            <field name="filename">february_2025_students.csv</field>
+            <field name="file_data" type="base64">bmFtZSxlbWFpbCxwaG9uZSxiaXJ0aF9kYXRlLGdlbmRlcixuYXRpb25hbGl0eSxuYXRpdmVfbGFuZ3VhZ2UsZW5nbGlzaF9sZXZlbCxoYXNfY2VydGlmaWNhdGUsY2VydGlmaWNhdGVfdHlwZSxjZXJ0aWZpY2F0ZV9kYXRlCkpvaG4gU21pdGgsam9obi5zbWl0aEBlbWFpbC5jb20sKzEyMzQ1Njc4OTAsMTk5MC0wMS0wMSxtYWxlLEFtZXJpY2FuLEVuZ2xpc2gsaW50ZXJtZWRpYXRlLHRydWUsVE9FRkwsMjAyMy0wMS0wMQpKYW5lIERvZSxqYW5lLmRvZUBlbWFpbC5jb20sKzEyMzQ1Njc4OTEsMTk4NS0wNS0xNSxmZW1hbGUsQ2FuYWRpYW4sRW5nbGlzaCxhZHZhbmNlZCx0cnVlLElFTFRTLDIwMjMtMDItMDEKTWlrZSBKb2huc29uLG1pa2Uuam9obnNvbkBlbWFpbC5jb20sKzEyMzQ1Njc4OTIsMTk4OC0xMi0xMCxtYWxlLEJyaXRpc2gsRW5nbGlzaCxpbnRlcm1lZGlhdGUsdHJ1ZSxDYW1icmlkZ2UsMjAyMy0wMy0wMQpTYXJhaCBXaWxsaWFtcyxzYXJhaC53aWxsaWFtc0BlbWFpbC5jb20sKzEyMzQ1Njc4OTMsMTk5Mi0wOC0yMCxmZW1hbGUsQXVzdHJhbGlhbixFbmdsaXNoLHVwcGVyX2ludGVybWVkaWF0ZSx0cnVlLElFTFRTLDIwMjMtMDQtMDEKRGF2aWQgQnJvd24sZGF2aWQuYnJvd25AZW1haWwuY29tLCsxMjM0NTY3ODk0LDE5ODctMDMtMjUsbWFsZSxBbWVyaWNhbixFbmdsaXNoLGludGVybWVkaWF0ZSx0cnVlLFRPRUZMLDIwMjMtMDUtMDEKTGlzYSBEYXZpcyxsaXNhLmRhdmlzQGVtYWlsLmNvbSwrMTIzNDU2Nzg5NSwxOTkxLTExLTEyLGZlbWFsZSxDYW5hZGlhbixFbmdsaXNoLGFkdmFuY2VkLHRydWUsSUVMVFMsMjAyMy0wNi0wMQpUb20gV2lsc29uLHRvbS53aWxzb25AZW1haWwuY29tLCsxMjM0NTY3ODk2LDE5ODktMDctMDgsbWFsZSxCcml0aXNoLEVuZ2xpc2gsaW50ZXJtZWRpYXRlLHRydWUsQ2FtYnJpZGdlLDIwMjMtMDctMDEKRW1tYSBUYXlsb3IsZW1tYS50YXlsb3JAZW1haWwuY29tLCsxMjM0NTY3ODk3LDE5OTMtMDQtMTgsZmVtYWxlLEF1c3RyYWxpYW4sRW5nbGlzaCx1cHBlcl9pbnRlcm1lZGlhdGUsdHJ1ZSxJRUxUUywyMDIzLTA4LTAxCkNocmlzIEFuZGVyc29uLGNocmlzLmFuZGVyc29uQGVtYWlsLmNvbSwrMTIzNDU2Nzg5OCwxOTg2LTA5LTMwLG1hbGUsQW1lcmljYW4sRW5nbGlzaCxpbnRlcm1lZGlhdGUsdHJ1ZSxUT0VGTCwyMDIzLTA5LTAxCk1hcmlhIEdhcmNpYSxtYXJpYS5nYXJjaWFAZW1haWwuY29tLCsxMjM0NTY3ODk5LDE5OTQtMDYtMDUsZmVtYWxlLFNwYW5pc2gsU3BhbmlzaCxpbnRlcm1lZGlhdGUsdHJ1ZSxERUxFLDIwMjMtMTAtMDE=</field>
             <field name="state">uploaded</field>
             <field name="upload_date">2025-02-01 14:15:00</field>
             <field name="total_records">25</field>

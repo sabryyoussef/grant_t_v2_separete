@@ -76,6 +76,7 @@
             <field name="certificate_type">participation</field>
             <field name="state">expired</field>
             <field name="issue_date" eval="(DateTime.now() - relativedelta(months=7)).strftime('%Y-%m-%d')"/>
+            <field name="valid_from" eval="(DateTime.now() - relativedelta(months=7)).strftime('%Y-%m-%d')"/>
             <field name="valid_until" eval="(DateTime.now() - relativedelta(months=1)).strftime('%Y-%m-%d')"/>
             <field name="certificate_description">Certificate in English communication skills</field>
             <field name="course_name">English Communication</field>
