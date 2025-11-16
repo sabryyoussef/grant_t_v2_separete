@@ -7,7 +7,7 @@
             <field name="name">Introduction to English Grammar</field>
             <field name="student_id" ref="demo_student_5"/>
             <field name="session_topic">Introduction to English Grammar</field>
-            <field name="session_date">2024-12-20 10:00:00</field>
+            <field name="session_date">2025-11-17 10:00:00</field>
             <field name="session_duration">2.0</field>
             <field name="state">scheduled</field>
             <field name="session_notes">Basic English grammar fundamentals and sentence structure</field>
@@ -18,7 +18,7 @@
             <field name="name">Vocabulary Building</field>
             <field name="student_id" ref="demo_student_6"/>
             <field name="session_topic">Vocabulary Building</field>
-            <field name="session_date">2024-12-21 14:00:00</field>
+            <field name="session_date">2025-11-16 14:00:00</field>
             <field name="session_duration">1.5</field>
             <field name="state">in_progress</field>
             <field name="attendance_status">present</field>
@@ -30,11 +30,11 @@
             <field name="name">Reading Comprehension</field>
             <field name="student_id" ref="demo_student_7"/>
             <field name="session_topic">Reading Comprehension</field>
-            <field name="session_date">2024-12-22 09:30:00</field>
+            <field name="session_date">2025-11-15 09:30:00</field>
             <field name="session_duration">2.5</field>
             <field name="state">completed</field>
             <field name="attendance_status">present</field>
-            <field name="check_out_time">2024-12-22 12:00:00</field>
+            <field name="check_out_time">2025-11-15 12:00:00</field>
             <field name="session_notes">Reading skills development and comprehension techniques</field>
         </record>
         
@@ -43,7 +43,7 @@
             <field name="name">Writing Skills Workshop</field>
             <field name="student_id" ref="demo_student_8"/>
             <field name="session_topic">Writing Skills Workshop</field>
-            <field name="session_date">2024-12-23 11:00:00</field>
+            <field name="session_date">2025-11-16 11:00:00</field>
             <field name="session_duration">2.0</field>
             <field name="state">cancelled</field>
             <field name="attendance_status">absent</field>
@@ -55,11 +55,11 @@
             <field name="name">Speaking Practice</field>
             <field name="student_id" ref="demo_student_5"/>
             <field name="session_topic">Speaking Practice</field>
-            <field name="session_date">2024-12-24 15:30:00</field>
+            <field name="session_date">2025-11-15 15:30:00</field>
             <field name="session_duration">1.0</field>
             <field name="state">completed</field>
             <field name="attendance_status">present</field>
-            <field name="check_out_time">2024-12-24 16:30:00</field>
+            <field name="check_out_time">2025-11-15 16:30:00</field>
             <field name="session_notes">Conversational English and pronunciation practice</field>
         </record>
         
@@ -68,7 +68,7 @@
             <field name="name">Listening Skills</field>
             <field name="student_id" ref="demo_student_6"/>
             <field name="session_topic">Listening Skills</field>
-            <field name="session_date">2024-12-25 10:00:00</field>
+            <field name="session_date">2025-11-16 10:00:00</field>
             <field name="session_duration">1.5</field>
             <field name="state">in_progress</field>
             <field name="attendance_status">present</field>
@@ -80,11 +80,11 @@
             <field name="name">Grammar Review</field>
             <field name="student_id" ref="demo_student_7"/>
             <field name="session_topic">Grammar Review</field>
-            <field name="session_date">2024-12-26 13:00:00</field>
+            <field name="session_date">2025-11-15 13:00:00</field>
             <field name="session_duration">2.0</field>
             <field name="state">completed</field>
             <field name="attendance_status">present</field>
-            <field name="check_out_time">2024-12-26 15:00:00</field>
+            <field name="check_out_time">2025-11-15 15:00:00</field>
             <field name="session_notes">Comprehensive grammar review and practice</field>
         </record>
         
@@ -93,7 +93,7 @@
             <field name="name">Final Assessment</field>
             <field name="student_id" ref="demo_student_8"/>
             <field name="session_topic">Final Assessment</field>
-            <field name="session_date">2024-12-27 09:00:00</field>
+            <field name="session_date">2025-11-18 09:00:00</field>
             <field name="session_duration">3.0</field>
             <field name="state">scheduled</field>
             <field name="session_notes">Comprehensive final assessment covering all topics</field>
@@ -104,11 +104,11 @@
             <field name="name">Business English</field>
             <field name="student_id" ref="demo_student_5"/>
             <field name="session_topic">Business English</field>
-            <field name="session_date">2024-12-28 14:30:00</field>
+            <field name="session_date">2025-11-15 14:30:00</field>
             <field name="session_duration">2.5</field>
             <field name="state">completed</field>
             <field name="attendance_status">present</field>
-            <field name="check_out_time">2024-12-28 17:00:00</field>
+            <field name="check_out_time">2025-11-15 17:00:00</field>
             <field name="session_notes">Professional communication and business vocabulary</field>
         </record>
         
@@ -117,7 +117,7 @@
             <field name="name">Presentation Skills</field>
             <field name="student_id" ref="demo_student_6"/>
             <field name="session_topic">Presentation Skills</field>
-            <field name="session_date">2024-12-29 11:00:00</field>
+            <field name="session_date">2025-11-16 11:00:00</field>
             <field name="session_duration">2.0</field>
             <field name="state">in_progress</field>
             <field name="attendance_status">present</field>
@@ -129,11 +129,11 @@
             <field name="name">Cultural Communication</field>
             <field name="student_id" ref="demo_student_7"/>
             <field name="session_topic">Cultural Communication</field>
-            <field name="session_date">2024-12-30 16:00:00</field>
+            <field name="session_date">2025-11-15 16:00:00</field>
             <field name="session_duration">1.5</field>
             <field name="state">completed</field>
             <field name="attendance_status">present</field>
-            <field name="check_out_time">2024-12-30 17:30:00</field>
+            <field name="check_out_time">2025-11-15 17:30:00</field>
             <field name="session_notes">Cross-cultural communication and etiquette</field>
         </record>
         
@@ -142,7 +142,7 @@
             <field name="name">Course Completion Ceremony</field>
             <field name="student_id" ref="demo_student_8"/>
             <field name="session_topic">Course Completion Ceremony</field>
-            <field name="session_date">2024-12-31 10:00:00</field>
+            <field name="session_date">2025-11-19 10:00:00</field>
             <field name="session_duration">1.0</field>
             <field name="state">scheduled</field>
             <field name="session_notes">Final ceremony and certificate presentation</field>
