@@ -221,29 +221,35 @@ class CourseSession(models.Model):
                     self.name = f"Session - {self.student_id.name}"
     
     @api.model
-    def create(self, vals):
+    def create(self, vals_list):
         """Override create to set default values."""
-        # Generate session name if not provided
-        if not vals.get('name') or vals.get('name') == 'New':
-            student_name = vals.get('student_id') and self.env['gr.student'].browse(vals['student_id']).name or 'Student'
-            session_date = vals.get('session_date')
-            if session_date:
-                try:
-                    date_obj = fields.Datetime.from_string(session_date)
-                    date_str = date_obj.strftime('%Y-%m-%d %H:%M')
-                    vals['name'] = f"Session - {student_name} - {date_str}"
-                except:
+        # Handle both single dict and list of dicts (Odoo 13+)
+        if not isinstance(vals_list, list):
+            vals_list = [vals_list]
+        
+        for vals in vals_list:
+            # Generate session name if not provided
+            if not vals.get('name') or vals.get('name') == 'New':
+                student_name = vals.get('student_id') and self.env['gr.student'].browse(vals['student_id']).name or 'Student'
+                session_date = vals.get('session_date')
+                if session_date:
+                    try:
+                        date_obj = fields.Datetime.from_string(session_date)
+                        date_str = date_obj.strftime('%Y-%m-%d %H:%M')
+                        vals['name'] = f"Session - {student_name} - {date_str}"
+                    except:
+                        vals['name'] = f"Session - {student_name}"
+                else:
                     vals['name'] = f"Session - {student_name}"
-            else:
-                vals['name'] = f"Session - {student_name}"
         
-        course_session = super(CourseSession, self).create(vals)
+        course_sessions = super(CourseSession, self).create(vals_list)
         
-        # Log creation
-        _logger.info('Course session created: %s - Student: %s, Date: %s', 
-                    course_session.name, course_session.student_id.name, course_session.session_date)
+        # Log creation for each session
+        for course_session in course_sessions:
+            _logger.info('Course session created: %s - Student: %s, Date: %s', 
+                        course_session.name, course_session.student_id.name, course_session.session_date)
         
-        return course_session
+        return course_sessions
     
     def action_start_session(self):
         """Action to start the session."""
