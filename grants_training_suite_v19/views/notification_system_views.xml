@@ -158,7 +158,7 @@
                     <field name="auto_generated"/>
                     
                     <templates>
-                        <t t-name="kanban-box">
+                        <t t-name="card">
                             <div class="oe_kanban_card oe_kanban_global_click" t-att-class="{
                                 'oe_kanban_card_success': record.status.raw_value == 'read',
                                 'oe_kanban_card_info': record.status.raw_value == 'sent',
