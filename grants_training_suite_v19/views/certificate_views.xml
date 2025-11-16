@@ -319,7 +319,7 @@ else:
             <field name="state">code</field>
             <field name="code">
 # Open certificate automation wizard
-action = env.ref('grants_training_suite_v2.action_gr_certificate_automation_wizard').read()[0]
+action = env.ref('grants_training_suite_v19.action_gr_certificate_automation_wizard').read()[0]
 action['context'] = {
     'default_operation_type': 'auto_generate',
     'default_date_from': (context_today() - timedelta(days=30)).strftime('%Y-%m-%d'),

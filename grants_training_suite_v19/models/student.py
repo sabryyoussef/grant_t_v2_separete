@@ -556,7 +556,7 @@ class Student(models.Model):
             raise UserError(_('Only eligible students can be assigned to agents.'))
         
         # Find available agent (round-robin assignment)
-        agent_group = self.env.ref('grants_training_suite_v2.group_agent', raise_if_not_found=False)
+        agent_group = self.env.ref('grants_training_suite_v19.group_agent', raise_if_not_found=False)
         if not agent_group:
             raise UserError(_('Agent group not found. Please contact system administrator.'))
         

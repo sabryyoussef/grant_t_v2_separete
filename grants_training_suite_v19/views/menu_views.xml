@@ -6,7 +6,7 @@
         <menuitem id="menu_grants_training_main"
                   name="Grants Training"
                   sequence="10"
-                  web_icon="grants_training_suite_v2,static/description/icon.png"/>
+                  web_icon="grants_training_suite_v19,static/description/icon.png"/>
         
         <!-- Intake Management Menu -->
         <menuitem id="menu_grants_training_intake"
@@ -133,7 +133,7 @@
         <menuitem id="menu_grants_training_security"
                   name="Security"
                   parent="menu_grants_training_config"
-                  groups="grants_training_suite_v2.group_manager"
+                  groups="grants_training_suite_v19.group_manager"
                   sequence="10"/>
         <!-- Reports Menu -->
         <menuitem id="menu_grants_training_reports"
@@ -152,7 +152,7 @@
                   name="Dashboard"
                   parent="menu_grants_training_main"
                   sequence="5"
-                  groups="grants_training_suite_v2.group_manager,grants_training_suite_v2.group_agent"/>
+                  groups="grants_training_suite_v19.group_manager,grants_training_suite_v19.group_agent"/>
         
         <!-- Phase 3: Advanced Features Menu -->
         <menuitem id="menu_grants_training_advanced"

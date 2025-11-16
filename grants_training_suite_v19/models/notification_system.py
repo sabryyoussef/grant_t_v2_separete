@@ -173,7 +173,7 @@ class ProgressNotification(models.Model):
             return
         
         # Create mail.message for email notification
-        mail_template = self.env.ref('grants_training_suite_v2.email_template_progress_notification', False)
+        mail_template = self.env.ref('grants_training_suite_v19.email_template_progress_notification', False)
         
         if mail_template:
             mail_template.send_mail(self.id, force_send=True)

@@ -1633,9 +1633,9 @@ class IntakeBatch(models.Model):
         if self.create_uid:
             recipients.append(self.create_uid)
         
-        # Add managers (users with grants_training_suite_v2.group_manager)
+        # Add managers (users with grants_training_suite_v19.group_manager)
         try:
-            manager_group = self.env.ref('grants_training_suite_v2.group_manager')
+            manager_group = self.env.ref('grants_training_suite_v19.group_manager')
             managers = self.env['res.users'].search([('groups_id', 'in', manager_group.id)])
             recipients.extend(managers)
         except Exception:
@@ -1709,7 +1709,7 @@ class IntakeBatch(models.Model):
                 template = self.env.ref(template_name)
             except Exception:
                 # Fallback to generic template
-                template = self.env.ref('grants_training_suite_v2.email_template_batch_notification_generic')
+                template = self.env.ref('grants_training_suite_v19.email_template_batch_notification_generic')
             
             # Send email to each recipient
             for recipient in recipients:
@@ -1763,12 +1763,12 @@ class IntakeBatch(models.Model):
     def _get_email_template_name(self, notification_type):
         """Get email template name based on notification type."""
         template_mapping = {
-            'success': 'grants_training_suite_v2.email_template_batch_success',
-            'error': 'grants_training_suite_v2.email_template_batch_error',
-            'warning': 'grants_training_suite_v2.email_template_batch_warning',
-            'info': 'grants_training_suite_v2.email_template_batch_info',
+            'success': 'grants_training_suite_v19.email_template_batch_success',
+            'error': 'grants_training_suite_v19.email_template_batch_error',
+            'warning': 'grants_training_suite_v19.email_template_batch_warning',
+            'info': 'grants_training_suite_v19.email_template_batch_info',
         }
-        return template_mapping.get(notification_type, 'grants_training_suite_v2.email_template_batch_notification_generic')
+        return template_mapping.get(notification_type, 'grants_training_suite_v19.email_template_batch_notification_generic')
     
     def action_send_test_notification(self):
         """Send a test notification for this batch."""
