@@ -12,6 +12,8 @@
             <field name="certificate_description">Certificate of completion for English Language Course</field>
             <field name="course_name">English Language Proficiency</field>
             <field name="issue_date" eval="(DateTime.now() - relativedelta(months=1)).strftime('%Y-%m-%d')"/>
+            <field name="valid_from" eval="(DateTime.now() - relativedelta(months=1)).strftime('%Y-%m-%d')"/>
+            <field name="valid_until" eval="(DateTime.now() + relativedelta(months=23)).strftime('%Y-%m-%d')"/>
         </record>
         
         <!-- Demo Certificate 2: Achievement State -->
@@ -22,6 +24,8 @@
             <field name="certificate_type">achievement</field>
             <field name="state">issued</field>
             <field name="issue_date" eval="(DateTime.now() - relativedelta(days=20)).strftime('%Y-%m-%d')"/>
+            <field name="valid_from" eval="(DateTime.now() - relativedelta(days=20)).strftime('%Y-%m-%d')"/>
+            <field name="valid_until" eval="(DateTime.now() + relativedelta(months=23)).strftime('%Y-%m-%d')"/>
             <field name="certificate_description">Certificate for achieving advanced level in English communication</field>
             <field name="course_name">Advanced English Communication</field>
             <field name="final_grade" eval="85.5"/>
@@ -35,6 +39,8 @@
             <field name="certificate_type">professional</field>
             <field name="state">issued</field>
             <field name="issue_date" eval="(DateTime.now() - relativedelta(days=15)).strftime('%Y-%m-%d')"/>
+            <field name="valid_from" eval="(DateTime.now() - relativedelta(days=15)).strftime('%Y-%m-%d')"/>
+            <field name="valid_until" eval="(DateTime.now() + relativedelta(months=23)).strftime('%Y-%m-%d')"/>
             <field name="certificate_description">Professional certificate in Business English communication</field>
             <field name="course_name">Business English Professional</field>
             <field name="final_grade" eval="90.0"/>
@@ -48,6 +54,8 @@
             <field name="certificate_type">excellence</field>
             <field name="state">verified</field>
             <field name="issue_date" eval="(DateTime.now() - relativedelta(days=10)).strftime('%Y-%m-%d')"/>
+            <field name="valid_from" eval="(DateTime.now() - relativedelta(days=10)).strftime('%Y-%m-%d')"/>
+            <field name="valid_until" eval="(DateTime.now() + relativedelta(months=23)).strftime('%Y-%m-%d')"/>
             <field name="verified_date" eval="(DateTime.now() - relativedelta(days=5)).strftime('%Y-%m-%d')"/>
             <field name="certificate_description">Excellence certificate in English language proficiency</field>
             <field name="course_name">English Language Excellence</field>
@@ -63,6 +71,8 @@
             <field name="certificate_type">participation</field>
             <field name="state">revoked</field>
             <field name="issue_date" eval="(DateTime.now() - relativedelta(months=2)).strftime('%Y-%m-%d')"/>
+            <field name="valid_from" eval="(DateTime.now() - relativedelta(months=2)).strftime('%Y-%m-%d')"/>
+            <field name="valid_until" eval="(DateTime.now() + relativedelta(months=22)).strftime('%Y-%m-%d')"/>
             <field name="certificate_description">Foundation level certificate in English language</field>
             <field name="course_name">English Foundation</field>
             <field name="notes">Revoked due to academic misconduct detected during verification</field>
@@ -75,9 +85,9 @@
             <field name="certificate_title">English Communication Certificate</field>
             <field name="certificate_type">participation</field>
             <field name="state">expired</field>
-            <field name="issue_date" eval="(DateTime.now() - relativedelta(months=7)).strftime('%Y-%m-%d')"/>
-            <field name="valid_from" eval="(DateTime.now() - relativedelta(months=7)).strftime('%Y-%m-%d')"/>
-            <field name="valid_until" eval="(DateTime.now() - relativedelta(months=1)).strftime('%Y-%m-%d')"/>
+            <field name="issue_date">2024-04-15</field>
+            <field name="valid_from">2024-04-15</field>
+            <field name="valid_until">2024-10-15</field>
             <field name="certificate_description">Certificate in English communication skills</field>
             <field name="course_name">English Communication</field>
         </record>
