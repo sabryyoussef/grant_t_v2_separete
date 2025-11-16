@@ -474,11 +474,17 @@ class IntakeBatch(models.Model):
     
     
     @api.model
-    def create(self, vals):
+    def create(self, vals_list):
         """Override create to generate sequence number."""
-        if vals.get('name', _('New')) == _('New'):
-            vals['name'] = self.env['ir.sequence'].next_by_code('gr.intake.batch') or _('New')
-        return super(IntakeBatch, self).create(vals)
+        # Handle both single dict and list of dicts (Odoo 13+)
+        if not isinstance(vals_list, list):
+            vals_list = [vals_list]
+        
+        for vals in vals_list:
+            if vals.get('name', _('New')) == _('New'):
+                vals['name'] = self.env['ir.sequence'].next_by_code('gr.intake.batch') or _('New')
+        
+        return super(IntakeBatch, self).create(vals_list)
     
     def action_upload_file(self):
         """Action to upload and validate file."""
