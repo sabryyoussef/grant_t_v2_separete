@@ -44,8 +44,8 @@
             <field name="state">graded</field>
             <field name="submission_date">2025-11-16 16:30:00</field>
             <field name="review_date">2025-11-17 10:00:00</field>
-            <field name="score">85.0</field>
-            <field name="max_score">100.0</field>
+            <field name="grade">85.0</field>
+            <field name="max_grade">100.0</field>
             <field name="feedback">Good work! Pay attention to punctuation and sentence structure.</field>
             <field name="homework_description">Write a 300-word essay about your favorite hobby</field>
         </record>
@@ -59,8 +59,8 @@
             <field name="state">completed</field>
             <field name="submission_date">2025-11-16 12:15:00</field>
             <field name="review_date">2025-11-16 16:00:00</field>
-            <field name="score">92.0</field>
-            <field name="max_score">100.0</field>
+            <field name="grade">92.0</field>
+            <field name="max_grade">100.0</field>
             <field name="feedback">Excellent pronunciation and fluency! Keep up the great work.</field>
             <field name="homework_description">Record a 5-minute speech about your future goals</field>
         </record>
@@ -74,8 +74,8 @@
             <field name="state">graded</field>
             <field name="submission_date">2025-11-19 10:30:00</field>
             <field name="review_date">2025-11-19 14:00:00</field>
-            <field name="score">78.0</field>
-            <field name="max_score">100.0</field>
+            <field name="grade">78.0</field>
+            <field name="max_grade">100.0</field>
             <field name="feedback">Good work but submitted late. Please manage your time better.</field>
             <field name="homework_description">Listen to the audio and answer the questions</field>
         </record>
@@ -122,8 +122,8 @@
             <field name="state">graded</field>
             <field name="submission_date">2025-11-20 11:00:00</field>
             <field name="review_date">2025-11-20 15:00:00</field>
-            <field name="score">88.0</field>
-            <field name="max_score">100.0</field>
+            <field name="grade">88.0</field>
+            <field name="max_grade">100.0</field>
             <field name="feedback">Very good understanding of cultural differences. Well done!</field>
             <field name="homework_description">Compare communication styles between two cultures</field>
         </record>
