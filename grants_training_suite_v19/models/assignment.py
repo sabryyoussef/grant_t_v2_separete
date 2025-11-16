@@ -182,24 +182,30 @@ class Assignment(models.Model):
                 record.days_since_assignment = 0
     
     @api.model
-    def create(self, vals):
+    def create(self, vals_list):
         """Override create to set sequence and initial state."""
-        if vals.get('name', _('New')) == _('New'):
-            vals['name'] = self.env['ir.sequence'].next_by_code('gr.assignment') or _('New')
+        # Handle both single dict and list of dicts (Odoo 13+)
+        if not isinstance(vals_list, list):
+            vals_list = [vals_list]
         
-        assignment = super(Assignment, self).create(vals)
+        for vals in vals_list:
+            if vals.get('name', _('New')) == _('New'):
+                vals['name'] = self.env['ir.sequence'].next_by_code('gr.assignment') or _('New')
         
-        # Update student's assignment information
-        if assignment.student_id:
-            assignment.student_id.assigned_agent_id = assignment.agent_id
-            assignment.student_id.assignment_date = assignment.assignment_date
-            assignment.student_id.state = 'assigned'
+        assignments = super(Assignment, self).create(vals_list)
         
-        # Log creation
-        _logger.info('Assignment created: %s - Student: %s, Agent: %s', 
-                    assignment.name, assignment.student_id.name, assignment.agent_id.name)
+        # Update student's assignment information for each assignment
+        for assignment in assignments:
+            if assignment.student_id:
+                assignment.student_id.assigned_agent_id = assignment.agent_id
+                assignment.student_id.assignment_date = assignment.assignment_date
+                assignment.student_id.state = 'assigned'
+            
+            # Log creation
+            _logger.info('Assignment created: %s - Student: %s, Agent: %s', 
+                        assignment.name, assignment.student_id.name, assignment.agent_id.name)
         
-        return assignment
+        return assignments
     
     def write(self, vals):
         """Override write to update student information when assignment changes."""
